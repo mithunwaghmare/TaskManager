@@ -8,8 +8,8 @@ namespace TaskManagerBusinessLayer
 {
     public interface ITaskService
     {
-        void AddTask(Tasks task);
-        List<Tasks> GetTasks();
-        void UpdateTasks(Tasks task);
+        bool AddTask(TaskDetails task);
+        List<TaskDetails> GetTasks();
+        void UpdateTasks(TaskDetails task);
     }
 }

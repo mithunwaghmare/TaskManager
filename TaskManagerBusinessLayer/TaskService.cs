@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using TaskManagerEntities;
 using TaskManagerDataLayer;
 using AutoMapper;
@@ -11,35 +11,43 @@ namespace TaskManagerBusinessLayer
 {
     public class TaskService : ITaskService
     {
-        Entities _context;
+        TaskManagerContext _context;
         IMapper mapper;
 
         public static TaskService CreateService()
         {
-            return new TaskService(new Entities());
+            return new TaskService(new TaskManagerContext());
         }
-        public TaskService(Entities context)
+
+        public TaskService(TaskManagerContext context)
         {
-            var mapConfig = new MapperConfiguration(x => x.CreateMap<TaskDetail, Tasks>().ReverseMap());
+            var mapConfig = new MapperConfiguration(x => x.CreateMap<Task, TaskDetails>().ReverseMap());
             mapper = mapConfig.CreateMapper();
             _context = context;
 
         }
-        public void AddTask(Tasks task)
+        public bool AddTask(TaskDetails task)
         {
-            throw new NotImplementedException();
-        }
-
-        public List<Tasks> GetTasks()
-        {
-            var data = _context.TaskDetails.ToList<TaskDetail>();
-            return mapper.Map<List<TaskDetail>, List<Tasks>>(data);
+            TaskManagerDataLayer.Task taskData = mapper.Map<Task>(task);
+            _context.tasks.Add(taskData);
+            _context.SaveChanges();
+            return true;
 
         }
 
-        public void UpdateTasks(Tasks task)
+        public List<TaskDetails> GetTasks()
         {
-            throw new NotImplementedException();
+            var data = _context.tasks.ToList<Task>();
+            return mapper.Map<List<Task>, List<TaskDetails>>(data);
+
+        }
+
+        public void UpdateTasks(TaskDetails task)
+        {
+            Task taskData = mapper.Map<Task>(task);
+            var entity = _context.tasks.Find(task.TaskID);
+            
+
         }
     }
 }

@@ -18,8 +18,15 @@ namespace TaskManagerWebAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetAllTask()
         {
-            List<Tasks> data = service.GetTasks();
+            List<TaskDetails> data = service.GetTasks();
             return Ok(data);
+        }
+        [HttpPost]
+        public IHttpActionResult Post(TaskDetails task)
+        {
+            bool re = service.AddTask(task);
+            return Ok(re);
+
         }
 
     }

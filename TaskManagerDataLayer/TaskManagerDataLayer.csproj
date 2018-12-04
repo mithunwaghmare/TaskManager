@@ -51,54 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ParentTaskDetail.cs">
-      <DependentUpon>TaskManagerModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TaskDetail.cs">
-      <DependentUpon>TaskManagerModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TaskManagerModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TaskManagerModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TaskManagerModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TaskManagerModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TaskManagerModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>TaskManagerModel.edmx</DependentUpon>
-    </Compile>
+    <Compile Include="Task.cs" />
+    <Compile Include="TaskManagerContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <EntityDeploy Include="TaskManagerModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>TaskManagerModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <None Include="TaskManagerModel.edmx.diagram">
-      <DependentUpon>TaskManagerModel.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="TaskManagerModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TaskManagerModel.edmx</DependentUpon>
-      <LastGenOutput>TaskManagerModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="TaskManagerModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>TaskManagerModel.edmx</DependentUpon>
-      <LastGenOutput>TaskManagerModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

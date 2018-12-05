@@ -10,6 +10,7 @@ namespace TaskManagerBusinessLayer
     {
         bool AddTask(TaskDetails task);
         List<TaskDetails> GetTasks();
-        void UpdateTasks(TaskDetails task);
+        bool UpdateTasks(TaskDetails task);
+        TaskDetails GetTaskByID(int id);
     }
 }

@@ -41,13 +41,20 @@ namespace TaskManagerBusinessLayer
             return mapper.Map<List<Task>, List<TaskDetails>>(data);
 
         }
+        public TaskDetails GetTaskByID(int id)
+        {
+            var data = _context.tasks.Find(id);
+            return mapper.Map<Task, TaskDetails>(data);
 
-        public void UpdateTasks(TaskDetails task)
+        }
+
+        public bool UpdateTasks(TaskDetails task)
         {
             Task taskData = mapper.Map<Task>(task);
             var entity = _context.tasks.Find(task.TaskID);
-            
-
+            _context.Entry(entity).CurrentValues.SetValues(task);
+            _context.SaveChanges();
+            return true;
         }
     }
 }

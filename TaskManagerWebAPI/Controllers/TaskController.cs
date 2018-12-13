@@ -44,6 +44,14 @@ namespace TaskManagerWebAPI.Controllers
             return Ok(re);
 
         }
+        [HttpDelete]
+        [Route("api/Task/DeleteTask/{TaskID}")]
+        public IHttpActionResult DeleteTask(int TaskID)
+        {
+            bool re = service.RemoveTask(TaskID);
+            return Ok(re);
+
+        }
 
     }
 }

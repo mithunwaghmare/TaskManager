@@ -12,5 +12,7 @@ namespace TaskManagerBusinessLayer
         List<TaskDetails> GetTasks();
         bool UpdateTasks(TaskDetails task);
         TaskDetails GetTaskByID(int id);
+
+        bool RemoveTask(int taskID);
     }
 }

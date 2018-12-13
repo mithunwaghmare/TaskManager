@@ -56,5 +56,12 @@ namespace TaskManagerBusinessLayer
             _context.SaveChanges();
             return true;
         }
+        public bool RemoveTask(int taskID)
+        {
+            var entity = _context.tasks.Find(taskID);
+            _context.tasks.Remove(entity);
+            _context.SaveChanges();
+            return true;
+        }
     }
 }

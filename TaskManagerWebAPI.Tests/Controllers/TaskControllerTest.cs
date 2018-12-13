@@ -18,6 +18,7 @@ namespace TaskManagerWebAPI.Tests.Controllers
     public class TaskControllerTest
     {
         [Test]
+        [PerfBenchmark(NumberOfIterations =500, RunMode = RunMode.Iterations,TestMode = TestMode.Test, SkipWarmups = true)]
         public void GetAllTaskTest()
         {
             var data = new List<TaskManagerDataLayer.Task>()
@@ -43,6 +44,7 @@ namespace TaskManagerWebAPI.Tests.Controllers
         }
 
         [Test]
+        [PerfBenchmark(NumberOfIterations = 500, RunMode = RunMode.Iterations, TestMode = TestMode.Test, SkipWarmups = true)]
         public void GetTaskByIDTest()
         {
             var data = new List<TaskManagerDataLayer.Task>()
@@ -62,6 +64,7 @@ namespace TaskManagerWebAPI.Tests.Controllers
             Assert.That(taskDetails.TaskID == 1);
         }
         [Test]
+        [PerfBenchmark(NumberOfIterations = 500, RunMode = RunMode.Iterations, TestMode = TestMode.Test, SkipWarmups = true)]
         public void AddTaskTest()
         {
             var data = new List<TaskManagerDataLayer.Task>()
@@ -86,6 +89,7 @@ namespace TaskManagerWebAPI.Tests.Controllers
 
         }
         [Test]
+        [PerfBenchmark(NumberOfIterations = 500, RunMode = RunMode.Iterations, TestMode = TestMode.Test, SkipWarmups = true)]
         public void UpdateTaskTest()
         {
             var data = new List<TaskManagerDataLayer.Task>()
@@ -104,6 +108,30 @@ namespace TaskManagerWebAPI.Tests.Controllers
             var mockDataService = new Mock<ITaskService>();
             var ret = mockDataService.Object.UpdateTasks(detail);
             Assert.That(ret == false);
+
+
+
+        }
+        [Test]
+        [PerfBenchmark(NumberOfIterations = 500, RunMode = RunMode.Iterations, TestMode = TestMode.Test, SkipWarmups = true)]
+        public void DeleteTaskTest()
+        {
+            var data = new List<TaskManagerDataLayer.Task>()
+            {
+                new TaskManagerDataLayer.Task {TaskID=1,TaskName="Task1",ParentTaskName="Task1Parent",Priority=10,StartDate=DateTime.Now,EndDate=DateTime.Now,IsCompleted=false },
+                new TaskManagerDataLayer.Task { TaskID=2,TaskName="Task2",ParentTaskName="Task2Parent",Priority=10,StartDate=DateTime.Now,EndDate=DateTime.Now,IsCompleted=true }
+            };
+            var context = new Mock<TaskManagerContext>();
+            context.Setup(x => x.tasks).Returns(new Mock<DbSet<TaskManagerDataLayer.Task>>().SetupData(data, o =>
+            {
+                return data.Single(x => x.TaskID == (int)o.First());
+            }).Object);
+
+            var service = new TaskService(context.Object);
+            var ret = service.RemoveTask(1);
+            //var mockDataService = new Mock<ITaskService>();
+            //var ret = mockDataService.Object.UpdateTasks(detail);
+            Assert.That(ret == true);
 
 
 

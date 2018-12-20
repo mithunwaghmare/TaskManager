@@ -15,10 +15,10 @@ namespace TaskManagerDataLayer
         public int ParentID { get; set; }
         public string TaskName { get; set; }
         public string ParentTaskName { get; set; }
-        public DateTime StartDate { get; set; }
+        public DateTime ? StartDate { get; set; }
         public DateTime? EndDate { get; set; }
         public short Priority { get; set; }
-        public bool IsCompleted { get; set; }
+      
 
     }
 }

@@ -1,0 +1,34 @@
+<br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col">
+        <label>Task:</label>
+        <input class="greyback" type="text"    [(ngModel)]="taskFilter.TaskName">
+      </div>
+      <div class="col">
+        <label>Parent Task:</label>
+        <input class="greyback" type="text"  [(ngModel)]="taskFilter.ParentTaskName">
+      </div>
+  </div>
+  <br>
+    <div class="row">
+        <div class="col">
+            <label>Priority From:</label>
+            <input class="greyback" id="PriorityFrom-search" size="10" [(ngModel)] = "taskFilter.PriorityFrom" />
+          </div>
+          <div class="col">
+            <label>Priority To:</label>
+            <input class="greyback" id="PriorityTo-search" size="10"  [(ngModel)] = "taskFilter.PriorityTo"/>
+          </div>
+          <div class="col">
+            <label>Start Date:</label>
+            <input class ="greyback" type="text" id="StartDate-search" size="10" [(ngModel)] = "taskFilter.StartDate" bsDatepicker />      
+          </div>
+          <div class="col">
+            <label>End Date:</label>
+            <input type = "text"class=" greyback" id="EndDate-search" size="10" [(ngModel)] = "taskFilter.EndDate" bsDatepicker/>
+          </div>
+    </div>
+    
+  </div>
+       

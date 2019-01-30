@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="jumbotron">
+    <h1>Task Manager</h1>
+  </div>
+  <div class="panel">
+    <div class="panel-heading">
+      <nav class="navbar navbar-expand-sm bg-light">
+        <!-- Links -->
+        <ul class="navbar-nav">
+          <li><a class = "color-me" routerLink="/add" [routerLinkActive]="'is-active'">Add Task</a></li>
+          <li><a class = "color-me" routerLink="/view"  routerLink="/"  [routerLinkActive]="'is-active'" [routerLinkActiveOptions]="{exact:true}">View Task</a></li>
+        </ul>
+      </nav>
+
+    </div>
+    
+      <router-outlet></router-outlet>
+    
+  </div>
+</div>

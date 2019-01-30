@@ -1,0 +1,9 @@
+body { margin: 2em; }
+.greyback {
+    border: 1px solid #ddd;  
+}
+.rt-mar-10{
+    
+    margin-right: 5%;
+}
+.dotted {border: 1px dotted lightgray; border-style: none none dotted; color: #fff; background-color: #fff; }

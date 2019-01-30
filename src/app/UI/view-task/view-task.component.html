@@ -1,0 +1,30 @@
+<div class="panel-body">
+  <app-search-task></app-search-task>  
+</div>
+  <br>
+
+  <div class="panel-body">
+  <table class="table " >
+    <tbody  *ngFor="let t of tasks | searchFilter:taskFilter.TaskName:taskFilter.ParentTaskName:taskFilter.PriorityFrom:taskFilter.PriorityTo:taskFilter.StartDate:taskFilter.EndDate">
+      <tr>
+        
+        <th scope="col" style="width:25%">Task</th>
+        <th scope="col"style="width:25%">ParentTaskName</th>
+        <th scope="col" style="width:10%">Priority</th>
+        <th scope="col" style="width:10%">Start</th>
+        <th scope="col" style="width:10%">End</th>
+        <th colspan="3">Action</th>
+      </tr>
+      <tr>
+      <td><div >{{t.TaskName}}</div></td>
+      <td><div >{{t.ParentTaskName}}</div></td>
+      <td>{{t.Priority}}</td>
+      <td>{{t.StartDate | date:'shortDate'}}</td>
+      <td>{{t.EndDate | date:'shortDate'}}</td>
+      <td><button class="btn-primary"  [disabled]="t.EndDate" (click)="EditTask(t.TaskID)">Edit</button></td>
+      <td><button class="btn-primary" style="width:100px" [disabled]="t.EndDate" (click)="EndTask(t)">End Task</button></td>
+      <td><button class="btn-danger" style="width:100px" (click)="DeleteTask(t.TaskID)">Delete Task</button></td>
+    </tr>
+    </tbody>
+  </table>
+</div>

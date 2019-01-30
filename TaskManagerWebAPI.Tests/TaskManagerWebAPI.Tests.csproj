@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit3TestAdapter.3.12.0\build\net35\NUnit3TestAdapter.props" Condition="Exists('..\packages\NUnit3TestAdapter.3.12.0\build\net35\NUnit3TestAdapter.props')" />
   <Import Project="..\packages\NBench.1.2.2\build\NBench.props" Condition="Exists('..\packages\NBench.1.2.2\build\NBench.props')" />
   <Import Project="..\packages\NUnit.3.11.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.11.0\build\NUnit.props')" />
   <PropertyGroup>
@@ -172,6 +173,7 @@
     <Error Condition="!Exists('..\packages\NUnit.3.11.0\build\NUnit.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit.3.11.0\build\NUnit.props'))" />
     <Error Condition="!Exists('..\packages\NBench.1.2.2\build\NBench.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NBench.1.2.2\build\NBench.props'))" />
     <Error Condition="!Exists('..\packages\NBench.1.2.2\build\NBench.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NBench.1.2.2\build\NBench.targets'))" />
+    <Error Condition="!Exists('..\packages\NUnit3TestAdapter.3.12.0\build\net35\NUnit3TestAdapter.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\NUnit3TestAdapter.3.12.0\build\net35\NUnit3TestAdapter.props'))" />
   </Target>
   <Import Project="..\packages\NBench.1.2.2\build\NBench.targets" Condition="Exists('..\packages\NBench.1.2.2\build\NBench.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
